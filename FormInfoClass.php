@@ -105,7 +105,18 @@ class FormInfoClass
         echo "<p><strong>Email:</strong> " . $this->email . "</p>";
         echo "<p><strong>Address:</strong> " . $this->address . "</p>";
     }
-    
+    public function saveToDatabase($mysqli)
+    {
+        // Prepare and bind the SQL statement
+        $stmt = $mysqli->prepare("INSERT INTO user_data (lastName, firstName, middleInitial, age, contactNo, email, address) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiiss", $this->lastName, $this->firstName, $this->middleInitial, $this->age, $this->contactNo, $this->email, $this->address);
+
+        // Execute the statement
+        $stmt->execute();
+
+        // Close the statement (do not close the connection here)
+        $stmt->close();
+    }
 }
 
 

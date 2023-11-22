@@ -1,26 +1,4 @@
-<?php
 
-// Include the FormInfoClass file
-include('FormInfoClass.php');
-
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Create an object of FormInfoClass
-    $formData = new FormInfoClass(
-        $_POST['lastName'],
-        $_POST['firstName'],
-        $_POST['middleInitial'],
-        $_POST['age'],
-        $_POST['contactNo'],
-        $_POST['email'],
-        $_POST['address']
-    );
-
-    // Display the entered data
-    $formData->displayInfo();
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
